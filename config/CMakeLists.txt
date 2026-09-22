@@ -19,7 +19,7 @@ option(BUILD_SHARED_LIBS "Whether the libraries built should be shared" FALSE)
 option(WITH_API "Enable support for C API via iso_c_binding module" TRUE)
 option(WITH_OpenMP "Enable support for shared memory parallelisation with OpenMP" FALSE)
 option(WITH_BLAS "Use external BLAS library" TRUE)
-option(WITH_TESTS "Enable compilation of unit tests" TRUE)
+option(WITH_TESTS "Enable compilation of unit tests" FALSE)
 if(NOT DEFINED "${PROJECT_NAME}-dependency-method")
   set(
     "${PROJECT_NAME}-dependency-method"
