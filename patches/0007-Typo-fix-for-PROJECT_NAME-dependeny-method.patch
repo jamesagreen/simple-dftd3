@@ -1,0 +1,27 @@
+From 0651fb8d81dd3080d10c3413c928d1f015bc12cd Mon Sep 17 00:00:00 2001
+From: James Green <green@ms1p.org>
+Date: Tue, 22 Sep 2026 12:47:52 +0200
+Subject: [PATCH 1/8] Typo fix for ${PROJECT_NAME}-dependeny-method
+
+- Should be ${PROJECT_NAME}-dependency-method
+- Should also be incorporated into upstream dftd3
+---
+ config/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/CMakeLists.txt b/config/CMakeLists.txt
+index 7733a1e..9f35b98 100644
+--- a/config/CMakeLists.txt
++++ b/config/CMakeLists.txt
+@@ -20,7 +20,7 @@ option(WITH_API "Enable support for C API via iso_c_binding module" TRUE)
+ option(WITH_OpenMP "Enable support for shared memory parallelisation with OpenMP" TRUE)
+ option(WITH_BLAS "Use external BLAS library" TRUE)
+ option(WITH_TESTS "Enable compilation of unit tests" TRUE)
+-if(NOT DEFINED "${PROJECT_NAME}-dependeny-method")
++if(NOT DEFINED "${PROJECT_NAME}-dependency-method")
+   set(
+     "${PROJECT_NAME}-dependency-method"
+     "subproject" "cmake" "pkgconf" "fetch"
+-- 
+2.43.0
+
