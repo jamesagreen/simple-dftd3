@@ -33,18 +33,20 @@ set(
 )
 set(module-dir "${module-dir}" PARENT_SCOPE)
 
-# Set build type as CMake does not provide defaults
-if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-  set(
-    CMAKE_BUILD_TYPE "RelWithDebInfo"
-    CACHE STRING "Build type to be used."
-    FORCE
-  )
-  message(
-    STATUS
-    "Setting build type to '${CMAKE_BUILD_TYPE}' as none was specified."
-  )
-endif()
+## Set build type as CMake does not provide defaults
+# JAG 28/02/25: Don't do this, will set the CMAKE_BUILD_TYPE 
+# to RelWithDebInfo for FHI-aims and add additional flags.
+#if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+#  set(
+#    CMAKE_BUILD_TYPE "RelWithDebInfo"
+#    CACHE STRING "Build type to be used."
+#    FORCE
+#  )
+#  message(
+#    STATUS
+#    "Setting build type to '${CMAKE_BUILD_TYPE}' as none was specified."
+#  )
+#endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
