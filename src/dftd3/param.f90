@@ -214,7 +214,7 @@ function get_method_id(method) result(id)
    case("tpss1kcis"); id = p_tpss1kcis_df
    case("tpssh"); id = p_tpssh_df
    case("wb97m"); id = p_wb97m_df
-   case("wb97x"); id = p_wb97x_df
+   case("wb97x","wb97xd3","wb97xv"); id = p_wb97x_df
    case("x3lyp"); id = p_x3lyp_df
    case("xlyp"); id = p_xlyp_df
    end select
