@@ -37,19 +37,9 @@ endif()
 if(NOT TARGET "mctc-lib::mctc-lib")
   find_package("mctc-lib" REQUIRED)
 endif()
-if(NOT TARGET "mstore::mstore" AND WITH_TESTS)
-  find_package("mstore" REQUIRED)
-endif()
-if(NOT TARGET "toml-f::toml-f")
-  find_package("toml-f" REQUIRED)
-endif()
 set(
   lib-deps
   "mctc-lib::mctc-lib"
-)
-set(
-  exe-deps
-  "toml-f::toml-f"
 )
 
 # Collect source of the project
@@ -92,7 +82,9 @@ target_include_directories(
 )
 
 # Add example application
-add_subdirectory("app")
+# JAG: 11/10/24: Don't build app as it needs toml-f
+# which I have removed as it causes issues with intel 2020 compilers
+#add_subdirectory("app")
 
 # Export targets for other projects
 add_library("${PROJECT_NAME}" INTERFACE)
