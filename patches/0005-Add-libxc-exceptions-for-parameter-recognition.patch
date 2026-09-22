@@ -1,0 +1,50 @@
+From 18d983e63784a0cfc9f6322401e267175b0a314e Mon Sep 17 00:00:00 2001
+From: James Green <green@ms1p.org>
+Date: Tue, 22 Sep 2026 13:26:50 +0200
+Subject: [PATCH 5/6] Add libxc exceptions for parameter recognition
+
+- Add aliases for some libxc functionals:
+  b1b95 = b88b95
+  bhlyp = bhandhlyp
+  pbe0 = pbeh
+- This should be incorporated upstream due to PR:
+https://github.com/dftd3/simple-dftd3/pull/130
+ so likely this patch will not be needed/will do nothing
+---
+ src/dftd3/param.f90 | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/dftd3/param.f90 b/src/dftd3/param.f90
+index 0e7e642..1c030f8 100644
+--- a/src/dftd3/param.f90
++++ b/src/dftd3/param.f90
+@@ -88,7 +88,7 @@ function get_method_id(method) result(id)
+    end do
+    select case(trim(lowercase(lc_method)))
+    case default; id = p_invalid
+-   case("b1b95"); id = p_b1b95_df
++   case("b1b95", "b88b95"); id = p_b1b95_df
+    case("b1lyp"); id = p_b1lyp_df
+    case("b1p", "b1p86"); id = p_b1p_df
+    case("b2gpplyp"); id = p_b2gpplyp_df
+@@ -104,7 +104,7 @@ function get_method_id(method) result(id)
+    case("b973c"); id = p_b973c_df
+    case("b97m"); id = p_b97m_df
+    case("b98"); id = p_b98_df
+-   case("bhlyp"); id = p_bhlyp_df
++   case("bhlyp", "bhandhlyp"); id = p_bhlyp_df
+    case("blyp"); id = p_blyp_df
+    case("bmk"); id = p_bmk_df
+    case("bop"); id = p_bop_df
+@@ -166,7 +166,7 @@ function get_method_id(method) result(id)
+    case("opbe"); id = p_opbe_df
+    case("otpss"); id = p_otpss_df
+    case("pbe"); id = p_pbe_df
+-   case("pbe0"); id = p_pbe0_df
++   case("pbe0", "pbeh"); id = p_pbe0_df
+    case("pbe1kcis"); id = p_pbe1kcis_df
+    case("pbe38"); id = p_pbe38_df
+    case("pbeh1pbe"); id = p_pbeh1pbe_df
+-- 
+2.43.0
+

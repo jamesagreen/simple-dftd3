@@ -1,0 +1,30 @@
+From fd16e08f827d8985b105ffec6e5a5b7fc2db71d5 Mon Sep 17 00:00:00 2001
+From: James Green <green@ms1p.org>
+Date: Tue, 22 Sep 2026 13:28:53 +0200
+Subject: [PATCH 6/6] wB97X-D3 exceptions
+
+- Added wb97xd3 and wb97xv aliases for wb97x since:
+- wB97X-D3(0) corresponds to the base HYB_GGA_XC_WB97X_D3 libxc XC
+- wB97X-D3(BJ) corresponds to the base HYB_GGA_XC_WB97X_V libxc XC
+- See issue https://github.com/dftd3/simple-dftd3/issues/143 for
+further details
+---
+ src/dftd3/param.f90 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/dftd3/param.f90 b/src/dftd3/param.f90
+index 1c030f8..19897ad 100644
+--- a/src/dftd3/param.f90
++++ b/src/dftd3/param.f90
+@@ -214,7 +214,7 @@ function get_method_id(method) result(id)
+    case("tpss1kcis"); id = p_tpss1kcis_df
+    case("tpssh"); id = p_tpssh_df
+    case("wb97m"); id = p_wb97m_df
+-   case("wb97x"); id = p_wb97x_df
++   case("wb97x","wb97xd3","wb97xv"); id = p_wb97x_df
+    case("x3lyp"); id = p_x3lyp_df
+    case("xlyp"); id = p_xlyp_df
+    end select
+-- 
+2.43.0
+

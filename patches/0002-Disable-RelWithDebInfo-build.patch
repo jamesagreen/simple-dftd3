@@ -1,0 +1,50 @@
+From f7733be841eb9fba84cf80a8572c26de3c46720c Mon Sep 17 00:00:00 2001
+From: James Green <green@ms1p.org>
+Date: Tue, 22 Sep 2026 13:22:11 +0200
+Subject: [PATCH 2/6] Disable RelWithDebInfo build
+
+- Don't do this automatically
+---
+ config/CMakeLists.txt | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/config/CMakeLists.txt b/config/CMakeLists.txt
+index ff8a909..f0ebcd0 100644
+--- a/config/CMakeLists.txt
++++ b/config/CMakeLists.txt
+@@ -33,18 +33,20 @@ set(
+ )
+ set(module-dir "${module-dir}" PARENT_SCOPE)
+ 
+-# Set build type as CMake does not provide defaults
+-if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+-  set(
+-    CMAKE_BUILD_TYPE "RelWithDebInfo"
+-    CACHE STRING "Build type to be used."
+-    FORCE
+-  )
+-  message(
+-    STATUS
+-    "Setting build type to '${CMAKE_BUILD_TYPE}' as none was specified."
+-  )
+-endif()
++## Set build type as CMake does not provide defaults
++# JAG 28/02/25: Don't do this, will set the CMAKE_BUILD_TYPE 
++# to RelWithDebInfo for FHI-aims and add additional flags.
++#if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
++#  set(
++#    CMAKE_BUILD_TYPE "RelWithDebInfo"
++#    CACHE STRING "Build type to be used."
++#    FORCE
++#  )
++#  message(
++#    STATUS
++#    "Setting build type to '${CMAKE_BUILD_TYPE}' as none was specified."
++#  )
++#endif()
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
+-- 
+2.43.0
+
